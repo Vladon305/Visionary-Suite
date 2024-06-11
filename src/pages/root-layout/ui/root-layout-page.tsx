@@ -1,12 +1,19 @@
-import { Outlet } from "react-router-dom";
+import { ReactElement } from 'react';
+import { Outlet } from 'react-router-dom';
+import { Layout } from 'shared';
 
-import { NavBar } from "@widgets/navigation";
+// import { NavBar } from "@widgets/navigation";
+type RootLayoutPageProps = {
+  children?: ReactElement;
+};
 
-export const RootLayoutPage = () => {
+export const RootLayoutPage = ({ children }: RootLayoutPageProps) => {
   return (
-    <div className="pb-26">
-      <Outlet />
-      <NavBar />
+    <div className='pb-26'>
+      <Layout>
+        <Outlet />
+      </Layout>
+      {/* <NavBar /> */}
     </div>
   );
 };
