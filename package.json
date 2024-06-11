@@ -31,8 +31,9 @@
   },
   "resolve-path-alias": {
     "alias": {
+      "~/*": "./*",
       "assets/*": "assets/*",
-      "app/*": "app/*",
+      "@app/*": "app/*",
       "mocks/*": "mocks/*",
       "modules/*": "modules/*",
       "pages/*": "pages/*",
