@@ -20,12 +20,22 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    "inlineSources": true,
+
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "noImplicitAny": true,
+
+    "allowJs": true,
+
     "baseUrl": "./",
     "paths": {
       "~/*": ["./*"],
       "shared/*": ["src/shared/*"],
-      "@app/*": ["src/app/*"],
-      "pages/*": ["src/pages/*"]
+      "app/*": ["src/app/*"],
+      "pages/*": ["src/pages/*"],
+      "modules/*": ["src/modules/*"]
     }
   },
   "include": ["src"],
