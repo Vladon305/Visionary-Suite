@@ -54,7 +54,7 @@ export const TaskMasterPage = () => {
               onChange={() => changeStatus(item.id)}
               checked={item.status}
             />
-            {item.name}{' '}
+            {item.name}
             <button
               onClick={() => {
                 setTodos(toDos.filter(todo => todo.id !== item.id));
