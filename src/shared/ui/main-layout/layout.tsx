@@ -2,10 +2,15 @@ import { Layout, theme } from 'antd';
 import { Header } from '../header';
 import { Sidebar } from '../sidebar';
 import { sidebarItems } from 'shared';
+import { ReactElement } from 'react';
 
 const { Content } = Layout;
 
-export const MainLayout = ({ children }) => {
+type Props = {
+  children?: ReactElement;
+};
+
+export const MainLayout = ({ children }: Props) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();

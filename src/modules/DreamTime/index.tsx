@@ -3,7 +3,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { useEffect, useMemo, useState } from 'react';
 import { CalculateType } from './types';
-import TimeSelect, { calculateTimeRange } from 'shared';
+import { calculateTimeRange, TimeSelect } from 'shared';
 
 dayjs.extend(customParseFormat);
 
@@ -37,6 +37,27 @@ export const DreamTime = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTime, setModalTime] = useState<Dayjs>(time);
 
+  useEffect(() => {
+    setCalculatedTimes(calculateSleepTime(time, activeTabKey));
+  }, [time, activeTabKey]);
+
+  const showModal = (time: Dayjs) => {
+    setIsModalOpen(true);
+    setModalTime(time);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const onChangeActiveTabKey = (key: string) => {
+    setActiveTabKey(key as CalculateType);
+  };
+  const onChangeTime: TimePickerProps['onChange'] = time => {
+    if (!time) return setTime(dayjs('00:00', 'HH:mm'));
+    setTime(time);
+  };
+
   const items = useMemo(
     () => [
       {
@@ -60,27 +81,6 @@ export const DreamTime = () => {
     ],
     [time],
   );
-
-  useEffect(() => {
-    setCalculatedTimes(calculateSleepTime(time, activeTabKey));
-  }, [time, activeTabKey]);
-
-  const showModal = (time: Dayjs) => {
-    setIsModalOpen(true);
-    setModalTime(time);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
-  const onChangeActiveTabKey = (key: string) => {
-    setActiveTabKey(key as CalculateType);
-  };
-  const onChangeTime: TimePickerProps['onChange'] = time => {
-    if (!time) return setTime(dayjs('00:00', 'HH:mm'));
-    setTime(time);
-  };
 
   const calculatedTimeRange = useMemo(() => {
     if (activeTabKey === 'wokeUp') {

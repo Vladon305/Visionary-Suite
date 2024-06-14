@@ -27,13 +27,13 @@
 
     "allowJs": true,
 
-    "baseUrl": "./",
+    "baseUrl": "src",
     "paths": {
       "~/*": ["./*"],
-      "shared/*": ["src/shared/*"],
-      "app/*": ["src/app/*"],
-      "pages/*": ["src/pages/*"],
-      "modules/*": ["src/modules/*"]
+      "shared/*": ["shared/*"],
+      "app/*": ["app/*"],
+      "pages/*": ["pages/*"],
+      "modules/*": ["modules/*"]
     }
   },
   "include": ["src"],

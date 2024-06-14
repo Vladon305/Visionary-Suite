@@ -1,6 +1,5 @@
 // import { App as AppPlugin } from "@capacitor/app";
-import { useEffect } from 'react';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 // import {
 //   BackButtonHandler,
@@ -8,7 +7,6 @@ import { Outlet, useNavigate } from 'react-router-dom';
 // } from "@shared/lib/back-button-context";
 
 export const RootPage = () => {
-  const navigate = useNavigate();
   // const { register, unregister } = useBackButtonContext();
 
   // useEffect(() => {

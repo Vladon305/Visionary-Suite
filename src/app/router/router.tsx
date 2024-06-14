@@ -5,33 +5,17 @@ import {
   EconoEyePage,
   TaskMasterPage,
   RootLayoutPage,
-  RootPage,
 } from 'pages';
 
 export const router = createBrowserRouter([
   {
     path: '/',
-    element: <RootPage />,
+    element: <RootLayoutPage />,
     children: [
-      {
-        element: <RootLayoutPage />,
-        children: [
-          { path: '/task-master', element: <TaskMasterPage /> },
-          { path: '/econo-eye', element: <EconoEyePage /> },
-          { path: '/dream-time', element: <DreamTimePage /> },
-          // { path: "/statistics", element: <StatisticsPage /> },
-          // { path: "/balances", element: <BalancesPage /> },
-          // {
-          //   path: "/settings",
-          //   element: <SettingsPage />,
-          // },
-        ],
-        errorElement: <ErrorPage />,
-      },
-      // {
-      //   path: "/",
-      //   element: <Navigate to="/transactions" replace />,
-      // },
+      { path: '/task-master', element: <TaskMasterPage />, index: true },
+      { path: '/econo-eye', element: <EconoEyePage /> },
+      { path: '/dream-time', element: <DreamTimePage /> },
     ],
+    errorElement: <ErrorPage />,
   },
 ]);
