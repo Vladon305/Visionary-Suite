@@ -1,11 +1,11 @@
-import { Breadcrumb, Layout, theme } from 'antd';
+import { Layout, theme } from 'antd';
 import { Header } from '../header';
 import { Sidebar } from '../sidebar';
 import { sidebarItems } from 'shared';
 
 const { Content } = Layout;
 
-export const MainLayout = () => {
+export const MainLayout = ({ children }) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
@@ -14,11 +14,13 @@ export const MainLayout = () => {
     <>
       <Layout>
         <Header background={colorBgContainer}>
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>Home</Breadcrumb.Item>
-            <Breadcrumb.Item>List</Breadcrumb.Item>
-            <Breadcrumb.Item>App</Breadcrumb.Item>
-          </Breadcrumb>
+          <>
+            {/* <Breadcrumb style={{ margin: '16px 0' }}>
+              <Breadcrumb.Item>Home</Breadcrumb.Item>
+              <Breadcrumb.Item>List</Breadcrumb.Item>
+              <Breadcrumb.Item>App</Breadcrumb.Item>
+            </Breadcrumb> */}
+          </>
         </Header>
         <Layout>
           <Sidebar background={colorBgContainer} menuItems={sidebarItems} />
@@ -32,7 +34,7 @@ export const MainLayout = () => {
                 borderRadius: borderRadiusLG,
               }}
             >
-              Content
+              {children}
             </Content>
           </Layout>
         </Layout>

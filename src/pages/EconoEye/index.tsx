@@ -1,5 +1,9 @@
-type Props = {};
+import { EconoEye } from 'modules';
 
-export const EconoEyePage = (props: Props) => {
-  return <div>EconoEye</div>;
+export const EconoEyePage = () => {
+  return (
+    <div>
+      <EconoEye />
+    </div>
+  );
 };
