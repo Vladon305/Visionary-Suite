@@ -20,10 +20,20 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+
+    "noImplicitAny": true,
+
+    "allowJs": true,
+
     "baseUrl": "./",
     "paths": {
+      "~/*": ["./*"],
       "shared/*": ["src/shared/*"],
-      "pages/*": ["src/pages/*"]
+      "app/*": ["src/app/*"],
+      "pages/*": ["src/pages/*"],
+      "modules/*": ["src/modules/*"]
     }
   },
   "include": ["src"],

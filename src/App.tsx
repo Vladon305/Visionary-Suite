@@ -1,9 +1,10 @@
-import { Layout } from "./shared";
+import { RouterProvider } from 'react-router-dom';
+import { router } from 'app';
 
 function App() {
   return (
     <>
-      <Layout />
+      <RouterProvider router={router} />
     </>
   );
 }

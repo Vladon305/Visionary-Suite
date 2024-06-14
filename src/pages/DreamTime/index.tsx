@@ -1,5 +1,5 @@
-type Props = {};
+import { DreamTime } from 'modules';
 
-export const DreamTimePage = (props: Props) => {
-  return <div>DreamTime</div>;
+export const DreamTimePage = () => {
+  return <DreamTime />;
 };
