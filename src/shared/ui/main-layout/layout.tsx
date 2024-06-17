@@ -17,7 +17,7 @@ export const MainLayout = ({ children }: Props) => {
 
   return (
     <>
-      <Layout>
+      <Layout style={{ height: '100vh' }}>
         <Header background={colorBgContainer}>
           <>
             {/* <Breadcrumb style={{ margin: '16px 0' }}>
