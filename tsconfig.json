@@ -27,7 +27,7 @@
 
     "allowJs": true,
 
-    "baseUrl": "./",
+    "baseUrl": "./src",
     "paths": {
       "~/*": ["./*"],
       "shared/*": ["src/shared/*"],
@@ -36,6 +36,5 @@
       "modules/*": ["src/modules/*"]
     }
   },
-  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

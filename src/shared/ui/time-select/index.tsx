@@ -1,7 +1,7 @@
 import { TimePicker, TimePickerProps } from 'antd';
 import { Dayjs } from 'dayjs';
 
-const TimeSelect = ({
+export const TimeSelect = ({
   time,
   onChange,
 }: {
@@ -17,5 +17,3 @@ const TimeSelect = ({
     />
   );
 };
-
-export default TimeSelect;

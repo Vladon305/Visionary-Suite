@@ -1,5 +1,3 @@
-type Props = {};
-
-export const EconoEye = (props: Props) => {
+export const EconoEye = () => {
   return <div>EconoEye</div>;
 };

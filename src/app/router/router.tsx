@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import ErrorPage from 'shared/ui/error';
+import { ErrorPage } from 'shared';
 import {
   DreamTimePage,
   EconoEyePage,

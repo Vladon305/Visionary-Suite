@@ -3,7 +3,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { useEffect, useMemo, useState } from 'react';
 import { CalculateType } from './types';
-import TimeSelect, { calculateTimeRange } from 'shared';
+import { TimeSelect, calculateTimeRange } from 'shared';
 
 dayjs.extend(customParseFormat);
 

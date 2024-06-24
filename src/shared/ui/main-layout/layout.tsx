@@ -5,7 +5,11 @@ import { sidebarItems } from 'shared';
 
 const { Content } = Layout;
 
-export const MainLayout = ({ children }) => {
+type Props = {
+  children: React.ReactNode;
+};
+
+export const MainLayout = ({ children }: Props) => {
   const {
     token: { colorBgContainer, borderRadiusLG },
   } = theme.useToken();
