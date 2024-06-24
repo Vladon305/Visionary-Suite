@@ -2,6 +2,7 @@ import { Layout, theme } from 'antd';
 import { Header } from '../header';
 import { Sidebar } from '../sidebar';
 import { sidebarItems } from 'shared';
+import styles from './layout.module.scss';
 
 const { Content } = Layout;
 
@@ -16,7 +17,7 @@ export const MainLayout = ({ children }: Props) => {
 
   return (
     <>
-      <Layout>
+      <Layout className={styles.layout}>
         <Header background={colorBgContainer}>
           <>
             {/* <Breadcrumb style={{ margin: '16px 0' }}>
@@ -28,12 +29,10 @@ export const MainLayout = ({ children }: Props) => {
         </Header>
         <Layout>
           <Sidebar background={colorBgContainer} menuItems={sidebarItems} />
-          <Layout style={{ padding: '0 24px 24px' }}>
+          <Layout className={styles.content__layout}>
             <Content
+              className={styles.content}
               style={{
-                padding: 24,
-                margin: 0,
-                minHeight: 280,
                 background: colorBgContainer,
                 borderRadius: borderRadiusLG,
               }}
