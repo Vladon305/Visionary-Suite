@@ -37,6 +37,11 @@ export const DreamTime = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTime, setModalTime] = useState<Dayjs>(time);
 
+  const onChangeTime: TimePickerProps['onChange'] = time => {
+    if (!time) return setTime(dayjs('00:00', 'HH:mm'));
+    setTime(time);
+  };
+
   const items = useMemo(
     () => [
       {
@@ -76,10 +81,6 @@ export const DreamTime = () => {
 
   const onChangeActiveTabKey = (key: string) => {
     setActiveTabKey(key as CalculateType);
-  };
-  const onChangeTime: TimePickerProps['onChange'] = time => {
-    if (!time) return setTime(dayjs('00:00', 'HH:mm'));
-    setTime(time);
   };
 
   const calculatedTimeRange = useMemo(() => {
