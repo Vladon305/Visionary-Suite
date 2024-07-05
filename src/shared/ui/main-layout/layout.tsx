@@ -1,9 +1,12 @@
-import { Layout, Skeleton, Space, theme } from 'antd';
+import { useState } from 'react';
+import { Button, Layout, Skeleton, Space, theme } from 'antd';
 import { Header } from '../header';
 import { Sidebar } from '../sidebar';
 import { sidebarItems } from 'shared';
 import styles from './layout.module.scss';
-import { useState } from 'react';
+import cn from 'classnames';
+
+import { MenuUnfoldOutlined, MenuFoldOutlined } from '@ant-design/icons';
 
 const { Content } = Layout;
 
@@ -21,6 +24,7 @@ export const MainLayout = ({ children }: Props) => {
   } = theme.useToken();
 
   const [size, setSize] = useState<SizeType>('default');
+  const [isCollapsedSidebar, setIsCollapsedSidebar] = useState(false);
   const [buttonShape, setButtonShape] = useState<ButtonShapeType>('default');
   const [avatarShape, setAvatarShape] = useState<AvatarShapeType>('circle');
   const [block, setBlock] = useState(false);
@@ -30,6 +34,22 @@ export const MainLayout = ({ children }: Props) => {
       <Layout className={styles.layout}>
         <Header background={colorBgContainer}>
           <div className={styles.header__container}>
+            <Button
+              type='text'
+              icon={
+                isCollapsedSidebar ? (
+                  <MenuUnfoldOutlined />
+                ) : (
+                  <MenuFoldOutlined />
+                )
+              }
+              onClick={() => setIsCollapsedSidebar(!isCollapsedSidebar)}
+              style={{
+                fontSize: '16px',
+                width: 64,
+                height: 64,
+              }}
+            />
             <div></div>
             <Space>
               <Skeleton.Button
@@ -47,8 +67,17 @@ export const MainLayout = ({ children }: Props) => {
             </Space>
           </div>
         </Header>
-        <Layout className={styles.layoutContentContainer}>
-          <Sidebar background={colorBgContainer} menuItems={sidebarItems} />
+        <Layout
+          className={cn(styles.layoutContentContainer, {
+            [styles.noPaddingLeft]: isCollapsedSidebar,
+          })}
+        >
+          <Sidebar
+            background={colorBgContainer}
+            menuItems={sidebarItems}
+            isCollapsed={isCollapsedSidebar}
+            setIsCollapsed={setIsCollapsedSidebar}
+          />
           <Layout className={styles.content__layout}>
             <Content
               className={styles.content}
