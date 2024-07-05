@@ -1,9 +1,11 @@
-import { EconoEye } from 'modules';
+import EconoEye from 'modules/EconoEye';
 
-export const EconoEyePage = () => {
+const EconoEyePage = () => {
   return (
     <div>
       <EconoEye />
     </div>
   );
 };
+
+export default EconoEyePage;

@@ -30,7 +30,7 @@ function calculateSleepTime(
   return dates;
 }
 
-export const DreamTime = () => {
+const DreamTime = () => {
   const [time, setTime] = useState(dayjs('00:00', 'HH:mm'));
   const [activeTabKey, setActiveTabKey] = useState<CalculateType>('wokeUp');
   const [calculatedTimes, setCalculatedTimes] = useState<Dayjs[]>([]);
@@ -123,3 +123,5 @@ export const DreamTime = () => {
     </div>
   );
 };
+
+export default DreamTime;

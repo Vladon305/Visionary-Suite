@@ -6,7 +6,7 @@ interface Todo {
   name: string;
   status: boolean;
 }
-export const TaskMasterPage = () => {
+const TaskMasterPage = () => {
   const [toDos, setTodos] = useState<Todo[]>([]);
   const [inputValue, setInputValue] = useState('');
 
@@ -68,3 +68,5 @@ export const TaskMasterPage = () => {
     </div>
   );
 };
+
+export default TaskMasterPage;

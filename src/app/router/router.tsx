@@ -1,12 +1,10 @@
 import { createBrowserRouter } from 'react-router-dom';
 import { ErrorPage } from 'shared';
-import {
-  DreamTimePage,
-  EconoEyePage,
-  TaskMasterPage,
-  RootLayoutPage,
-  RootPage,
-} from 'pages';
+import TaskMasterPage from 'pages/TaskMaster';
+import EconoEyePage from 'pages/EconoEye';
+import DreamTimePage from 'pages/DreamTime';
+import { RootLayoutPage } from 'pages/root-layout';
+import { RootPage } from 'pages/root';
 
 export const router = createBrowserRouter([
   {
