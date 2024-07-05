@@ -4,6 +4,8 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { useEffect, useMemo, useState } from 'react';
 import { CalculateType } from './types';
 import { TimeSelect, calculateTimeRange } from 'shared';
+import styles from './dream-time.module.scss';
+import './dream-time.scss';
 
 dayjs.extend(customParseFormat);
 
@@ -98,7 +100,7 @@ const DreamTime = () => {
         onChange={onChangeActiveTabKey}
         type='card'
         items={items}
-      ></Tabs>
+      />
       <Card>
         {calculatedTimes.map((time, i) => (
           <Card.Grid key={time.date() + i} onClick={() => showModal(time)}>
