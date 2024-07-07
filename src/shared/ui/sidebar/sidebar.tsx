@@ -18,11 +18,6 @@ export const Sidebar = ({
   setIsCollapsed,
 }: Props) => {
   const navigate = useNavigate();
-
-  useEffect(() => {
-    navigate(menuKeys[0]);
-  }, [menuKeys]);
-
   return (
     <Sider
       style={{ background }}
@@ -40,10 +35,11 @@ export const Sidebar = ({
     >
       <Menu
         mode='inline'
-        openKeys={menuKeys}
+        // defaultSelectedKeys={['1']}
+        // defaultOpenKeys={['sub1']}
         style={{ height: '100%', borderRight: 0 }}
         onSelect={({ key }) => {
-          setMenuKeys([key]);
+          navigate(key);
         }}
         items={menuItems}
       />
