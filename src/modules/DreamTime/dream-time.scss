@@ -1,0 +1,8 @@
+@media (width < 376px) {
+  .ant-tabs-nav-list {
+    /* flex-direction: column;
+    align-items: center; */
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+}

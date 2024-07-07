@@ -1,5 +1,7 @@
-import { DreamTime } from 'modules';
+import DreamTime from 'modules/DreamTime';
 
-export const DreamTimePage = () => {
+const DreamTimePage = () => {
   return <DreamTime />;
 };
+
+export default DreamTimePage;

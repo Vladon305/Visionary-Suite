@@ -3,7 +3,9 @@ import dayjs, { Dayjs } from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { useEffect, useMemo, useState } from 'react';
 import { CalculateType } from './types';
-import { calculateTimeRange, TimeSelect } from 'shared';
+import { TimeSelect, calculateTimeRange } from 'shared';
+import styles from './dream-time.module.scss';
+import './dream-time.scss';
 
 dayjs.extend(customParseFormat);
 
@@ -30,29 +32,13 @@ function calculateSleepTime(
   return dates;
 }
 
-export const DreamTime = () => {
+const DreamTime = () => {
   const [time, setTime] = useState(dayjs('00:00', 'HH:mm'));
   const [activeTabKey, setActiveTabKey] = useState<CalculateType>('wokeUp');
   const [calculatedTimes, setCalculatedTimes] = useState<Dayjs[]>([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalTime, setModalTime] = useState<Dayjs>(time);
 
-  useEffect(() => {
-    setCalculatedTimes(calculateSleepTime(time, activeTabKey));
-  }, [time, activeTabKey]);
-
-  const showModal = (time: Dayjs) => {
-    setIsModalOpen(true);
-    setModalTime(time);
-  };
-
-  const handleCancel = () => {
-    setIsModalOpen(false);
-  };
-
-  const onChangeActiveTabKey = (key: string) => {
-    setActiveTabKey(key as CalculateType);
-  };
   const onChangeTime: TimePickerProps['onChange'] = time => {
     if (!time) return setTime(dayjs('00:00', 'HH:mm'));
     setTime(time);
@@ -82,6 +68,23 @@ export const DreamTime = () => {
     [time],
   );
 
+  useEffect(() => {
+    setCalculatedTimes(calculateSleepTime(time, activeTabKey));
+  }, [time, activeTabKey]);
+
+  const showModal = (time: Dayjs) => {
+    setIsModalOpen(true);
+    setModalTime(time);
+  };
+
+  const handleCancel = () => {
+    setIsModalOpen(false);
+  };
+
+  const onChangeActiveTabKey = (key: string) => {
+    setActiveTabKey(key as CalculateType);
+  };
+
   const calculatedTimeRange = useMemo(() => {
     if (activeTabKey === 'wokeUp') {
       return calculateTimeRange(time, modalTime);
@@ -97,7 +100,7 @@ export const DreamTime = () => {
         onChange={onChangeActiveTabKey}
         type='card'
         items={items}
-      ></Tabs>
+      />
       <Card>
         {calculatedTimes.map((time, i) => (
           <Card.Grid key={time.date() + i} onClick={() => showModal(time)}>
@@ -122,3 +125,5 @@ export const DreamTime = () => {
     </div>
   );
 };
+
+export default DreamTime;

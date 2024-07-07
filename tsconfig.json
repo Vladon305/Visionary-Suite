@@ -16,7 +16,6 @@
 
     /* Linting */
     "strict": true,
-    "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true,
 
@@ -27,7 +26,7 @@
 
     "allowJs": true,
 
-    "baseUrl": "src",
+    "baseUrl": "./src",
     "paths": {
       "~/*": ["./*"],
       "shared/*": ["shared/*"],
@@ -36,6 +35,5 @@
       "modules/*": ["modules/*"]
     }
   },
-  "include": ["src"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

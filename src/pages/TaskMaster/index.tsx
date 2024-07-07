@@ -9,7 +9,7 @@ interface Todo {
   description: string;
   status: boolean;
 }
-export const TaskMasterPage = () => {
+const TaskMasterPage = () => {
   const [toDos, setTodos] = useState<Todo[]>([]);
   const [selectedToDo, setSelectedToDo] = useState<Todo | null>(null);
   const [discriptionInputValue, setDiscriptionInputValue] = useState('');
@@ -149,3 +149,5 @@ export const TaskMasterPage = () => {
     </Flex>
   );
 };
+
+export default TaskMasterPage;

@@ -1,4 +1,3 @@
-// import { App as AppPlugin } from "@capacitor/app";
 import { Outlet } from 'react-router-dom';
 
 // import {
