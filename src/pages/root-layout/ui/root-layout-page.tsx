@@ -5,7 +5,7 @@ import { Layout } from 'shared';
 
 export const RootLayoutPage = () => {
   return (
-    <div className='pb-26'>
+    <div>
       <Layout>
         <Outlet />
       </Layout>

@@ -1,6 +1,7 @@
 import { Layout, Menu, MenuProps } from 'antd';
-import { Dispatch, SetStateAction, useState } from 'react';
+import { Dispatch, SetStateAction, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useDeviceAndScreen } from 'shared/lib/hooks/useDeviceAndScreen';
 
 const { Sider } = Layout;
 
@@ -18,6 +19,8 @@ export const Sidebar = ({
   setIsCollapsed,
 }: Props) => {
   const navigate = useNavigate();
+  const { isMobile } = useDeviceAndScreen();
+
   return (
     <Sider
       style={{ background }}
@@ -29,9 +32,7 @@ export const Sidebar = ({
       onBreakpoint={broken => {
         setIsCollapsed(broken);
       }}
-      onCollapse={(collapsed, type) => {
-        console.log(collapsed, type);
-      }}
+      width={isMobile ? '100%' : undefined}
     >
       <Menu
         mode='inline'
