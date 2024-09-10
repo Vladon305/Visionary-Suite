@@ -1,6 +1,9 @@
+import { Button } from 'antd';
 import { useRouteError } from 'react-router-dom';
 
-export function ErrorPage() {
+type Props = { resetError: () => void };
+
+export function ErrorPage({ resetError }: Props) {
   const error = useRouteError() as { message: string; statusText: string };
   console.error(error);
 
@@ -11,6 +14,7 @@ export function ErrorPage() {
       <p>
         <i>{error.statusText || error.message}</i>
       </p>
+      <Button onClick={resetError}>clear</Button>
     </div>
   );
 }
