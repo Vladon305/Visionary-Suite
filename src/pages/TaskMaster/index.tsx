@@ -53,7 +53,14 @@ const TaskMasterPage = () => {
     <Flex vertical style={{ maxHeight: '100vh' }}>
       <Row gutter={10} style={{}} justify={'space-between'}>
         <Col>
-          <Card>
+          <Card
+            onKeyDown={event => {
+              if (event.key === 'Enter') {
+                event.preventDefault();
+                handleAddToArray();
+              }
+            }}
+          >
             <div style={{ display: 'flex', gap: '5px' }}>
               <input
                 type='text'
@@ -91,7 +98,7 @@ const TaskMasterPage = () => {
         <Col>
           <Card
             style={{
-              width: '250px',
+              width: '260px',
               height: '327px',
               overflowY: 'scroll',
             }}
