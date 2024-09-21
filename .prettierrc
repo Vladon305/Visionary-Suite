@@ -1,0 +1,25 @@
+{
+  "semi": true,
+  "tabWidth": 2,
+  "printWidth": 80,
+  "singleQuote": true,
+  "trailingComma": "all",
+  "jsxSingleQuote": true,
+  "bracketSpacing": true,
+  "useTabs": false,
+  "jsxBracketSameLine": false,
+  "arrowParens": "avoid",
+  "importOrder": [
+    "^react",
+    "^classnames",
+    "@vanilla-extract/css",
+    "@vanilla-extract/recipes",
+    "@storybook/react",
+    "<THIRD_PARTY_MODULES>",
+    "^components",
+    "^themes",
+    "^types",
+    "^assets",
+    "^[./]"
+  ]
+}
