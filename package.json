@@ -1,46 +1,30 @@
 {
-  "name": "Visionary-Suite",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "start": "vite",
-    "build": "tsc && vite build",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
-  },
-  "dependencies": {
-    "@ant-design/icons": "^5.3.7",
-    "antd": "^5.16.1",
-    "classnames": "^2.5.1",
-    "dayjs": "^1.11.11",
-    "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "react-router-dom": "^6.23.0",
-    "sass": "^1.75.0"
-  },
-  "devDependencies": {
-    "@types/node": "^20.12.7",
-    "@types/react": "^18.2.66",
-    "@types/react-dom": "^18.2.22",
-    "@typescript-eslint/eslint-plugin": "^7.2.0",
-    "@typescript-eslint/parser": "^7.2.0",
-    "@vitejs/plugin-react-swc": "^3.5.0",
-    "eslint": "^8.57.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.6",
-    "typescript": "^5.2.2",
-    "vite": "^5.2.0"
-  },
-  "resolve-path-alias": {
-    "alias": {
-      "~/*": "./*",
-      "assets/*": "assets/*",
-      "@app/*": "app/*",
-      "mocks/*": "mocks/*",
-      "modules/*": "modules/*",
-      "pages/*": "pages/*",
-      "shared/*": "shared/*"
-    }
-  }
+	"name": "visionary-suite",
+	"version": "0.1.0",
+	"private": true,
+	"scripts": {
+		"dev": "next dev",
+		"build": "next build",
+		"start": "next start",
+		"lint": "next lint"
+	},
+	"dependencies": {
+		"@ant-design/icons": "^5.5.1",
+		"antd": "^5.20.6",
+		"dayjs": "^1.11.13",
+		"next": "14.2.13",
+		"react": "^18",
+		"react-dom": "^18",
+		"sass": "^1.79.2"
+	},
+	"devDependencies": {
+		"@types/node": "^20",
+		"@types/react": "^18",
+		"@types/react-dom": "^18",
+		"eslint": "^8",
+		"eslint-config-next": "14.2.13",
+		"postcss": "^8",
+		"tailwindcss": "^3.4.1",
+		"typescript": "^5"
+	}
 }
