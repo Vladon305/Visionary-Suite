@@ -33,7 +33,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   const [user, setUser] = useState<User | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
-  const [tokenTimestamp, setTokenTimestamp] = useState<number | null>(null);
+  const [tokenExpiryTime, setTokenExpiryTime] = useState<number | null>(null); // Время истечения токена
 
   const [login] = useLoginMutation();
   const [register] = useRegisterMutation();
@@ -45,7 +45,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     try {
       const data = await login(credentials).unwrap();
       localStorage.setItem('accessToken', data.accessToken);
-      setTokenTimestamp(Date.now()); // Сохраните время получения токена
+      setTokenExpiryTime(Date.now() + 60 * 60 * 1000); // Устанавливаем время истечения через 1 час
       setUser(data.user);
       router.push('/');
       return true;
@@ -62,7 +62,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     try {
       const data = await register(credentials).unwrap();
       localStorage.setItem('accessToken', data.accessToken);
-      setTokenTimestamp(Date.now()); // Сохраните время получения токена
+      setTokenExpiryTime(Date.now() + 60 * 60 * 1000); // Устанавливаем время истечения через 1 час
       setUser(data.user);
       router.push('/');
       return true;
@@ -80,6 +80,7 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       await logout().unwrap();
       localStorage.removeItem('accessToken');
       setUser(null);
+      setTokenExpiryTime(null);
       router.push('/');
     } catch (error) {
       console.error('Logout error:', error);
@@ -94,8 +95,8 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
 
     try {
       const data = await getNewTokens().unwrap();
-      localStorage.setItem('accessToken', data.accessToken); // Обновление токена доступа
-      setTokenTimestamp(Date.now()); // Обновите время получения токена
+      localStorage.setItem('accessToken', data.accessToken);
+      setTokenExpiryTime(Date.now() + 60 * 60 * 1000); // Обновление времени истечения токена
       setUser(data.user);
     } catch (error) {
       console.error('Token refresh error:', error);
@@ -104,25 +105,25 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
     }
   };
 
+  // Устанавливаем таймер для обновления токена
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (tokenTimestamp) {
-        const tokenExpiry = tokenTimestamp + 60 * 60 * 1000; // Токен истекает через 1 час
-        const timeToExpiry = tokenExpiry - Date.now();
+    if (tokenExpiryTime) {
+      const timeToRefresh = tokenExpiryTime - Date.now() - 5 * 60 * 1000; // Обновить токен за 5 минут до истечения
+      if (timeToRefresh > 0) {
+        const timer = setTimeout(() => {
+          checkAuth(); // Обновляем токен перед истечением срока
+        }, timeToRefresh);
 
-        // Если до истечения токена осталось менее 5 минут, вызываем checkAuth
-        if (timeToExpiry < 5 * 60 * 1000) {
-          checkAuth();
-        }
+        // Очищаем таймер при размонтировании
+        return () => clearTimeout(timer);
       }
-    }, 60 * 1000); // Проверка каждую минуту
+    }
+  }, [tokenExpiryTime]);
 
-    // Проверка авторизации при загрузке страницы
+  // Проверка авторизации при загрузке страницы
+  useEffect(() => {
     checkAuth();
-
-    // Очистка интервала при размонтировании компонента
-    return () => clearInterval(interval);
-  }, [tokenTimestamp]);
+  }, []);
 
   return (
     <AuthContext.Provider
